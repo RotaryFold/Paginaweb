@@ -1,9 +1,8 @@
-# Project Title
+# Metal Legends
 
-One Paragraph of the project description
+This project is an example of my fav bands.
 
-Initially appeared on
-[gist](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2). But the page cannot open anymore so that is why I have moved it here.
+
 
 ## Getting Started
 
@@ -13,9 +12,7 @@ for notes on deploying the project on a live system.
 
 ### Prerequisites
 
-Requirements for the software and other tools to build, test and push 
-- [Example 1](https://www.example.com)
-- [Example 2](https://www.example.com)
+I used the provided w3schools for reference, and also I used chatgpt for the inspiration on my website.
 
 ### Installing
 
@@ -73,12 +70,10 @@ repository](https://github.com/PurpleBooth/a-good-readme-template/tags).
 
 ## Authors
 
-  - **Billie Thompson** - *Provided README Template* -
-    [PurpleBooth](https://github.com/PurpleBooth)
+  - **Joel Peña Farías** - *Provided README Template* -
+    [RotaryFold](https://github.com/RotaryFold)
 
-See also the list of
-[contributors](https://github.com/PurpleBooth/a-good-readme-template/contributors)
-who participated in this project.
+
 
 ## License
 
