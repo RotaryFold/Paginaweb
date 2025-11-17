@@ -64,8 +64,8 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     /* Simple form submit handling */
-    const contactForm = document.getElementById('contact-form');
-    contactForm.addEventListener('submit', (event) => {
+    const contactform = document.getElementById('contact-form');
+    contactform.addEventListener('submit', (event) => {
         event.preventDefault();
         // get values (camelCase variables)
         const name = document.getElementById('name').value.trim();
@@ -82,11 +82,11 @@ window.addEventListener('DOMContentLoaded', () => {
         contactForm.reset();
 
         const playButton = document.getElementById("playMusic");
-const music = document.getElementById("bgMusic");
+        const music = document.getElementById("bgMusic");
 
-playButton.addEventListener("click", () => {
-  music.play();
-  playButton.style.display = "none"; // Oculta el botón al empezar
-});
+        playButton.addEventListener("click", () => {
+            music.play();
+            playButton.style.display = "none";
+        });
     });
 });
