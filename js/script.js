@@ -1,8 +1,8 @@
-/* script.js - VERSIÓN FINAL QUE SÍ FUNCIONA 100% - CRUD VISUAL Y PERSISTENTE */
+
 
 const MAX_IMAGES = 10;
 
-/* Clase para las tarjetas de bandas */
+
 class BandCard {
   constructor(cardElement) {
     this.cardElement = cardElement;
@@ -26,12 +26,12 @@ class BandCard {
   }
 }
 
-/* ===== CRUD CONCIERTOS - FUNCIONA SÍ O SÍ ===== */
+
 let concerts = [];
 
 function loadConcerts() {
   const list = document.getElementById("concert-list");
-  list.innerHTML = ""; // limpiar
+  list.innerHTML = ""; 
 
   concerts = JSON.parse(localStorage.getItem("concerts")) || [];
 
@@ -50,7 +50,7 @@ function loadConcerts() {
     list.appendChild(card);
   });
 
-  // Eventos delete (siempre después de crear las tarjetas)
+
   document.querySelectorAll(".delete-btn").forEach(btn => {
     btn.onclick = function () {
       const i = parseInt(this.dataset.index);
@@ -61,13 +61,12 @@ function loadConcerts() {
   });
 }
 
-/* TODO AL CARGAR LA PÁGINA */
 document.addEventListener("DOMContentLoaded", () => {
 
- // Cargar conciertos al inicio
+
   loadConcerts();
 
-  // Formulario añadir concierto
+
   document.getElementById("concert-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -84,10 +83,10 @@ document.addEventListener("DOMContentLoaded", () => {
     concerts.push({ name, location, date, image });
     localStorage.setItem("concerts", JSON.stringify(concerts));
     this.reset();
-    loadConcerts(); // ← Aquí se ve el cambio visual
+    loadConcerts(); 
   });
 
-  // Menú móvil
+
   const menuBtn = document.getElementById("menu-btn");
   const navMenu = document.getElementById("nav-menu");
   if (menuBtn && navMenu) {
