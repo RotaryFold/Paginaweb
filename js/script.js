@@ -1,8 +1,8 @@
-/* script.js - Versión FINAL 10/10 - Todo funciona perfecto */
+/* script.js - VERSIÓN FINAL QUE SÍ FUNCIONA 100% - CRUD VISUAL Y PERSISTENTE */
 
 const MAX_IMAGES = 10;
 
-/* Band card class - PascalCase */
+/* Clase para las tarjetas de bandas */
 class BandCard {
   constructor(cardElement) {
     this.cardElement = cardElement;
@@ -20,53 +20,55 @@ class BandCard {
     const modal = document.getElementById('band-modal');
     const modalTitle = document.getElementById('modal-title');
     const modalText = document.getElementById('modal-text');
-
     modalTitle.textContent = this.title;
-    modalText.textContent = `Info: ${this.meta}. Legendary heavy metal band with decades of history.`;
+    modalText.textContent = `Info: ${this.meta}. Legendary heavy metal band.`;
     modal.setAttribute('aria-hidden', 'false');
   }
 }
 
-/* ===== CRUD CONCIERTOS - VERSIÓN QUE FUNCIONA SÍ O SÍ ===== */
+/* ===== CRUD CONCIERTOS - FUNCIONA SÍ O SÍ ===== */
 let concerts = [];
 
 function loadConcerts() {
   const list = document.getElementById("concert-list");
-  list.innerHTML = "";                                     // limpiar
+  list.innerHTML = ""; // limpiar
 
   concerts = JSON.parse(localStorage.getItem("concerts")) || [];
 
-concerts.forEach((concert, index) => {
-  const card = document.createElement("div");
-  card.className = "concert-card";
-  card.innerHTML = `
-    <img src="${concert.image}" alt="${concert.name} concert" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
-    <h3>${concert.name}</h3>
-    <p><strong>Location:</strong> ${concert.location}</p>
-    <p><strong>Date:</strong> ${concert.date}</p>
-    <button class="btn-secondary delete-btn" data-index="${index}">Delete</button>
-  `;
-  concertList.appendChild(card);
-});
+  concerts.forEach((concert, index) => {
+    const card = document.createElement("div");
+    card.className = "concert-card";
+    card.innerHTML = `
+      <img src="${concert.image}" alt="${concert.name}" onerror="this.src='https://via.placeholder.com/300x200/111/fff?text=No+Image'">
+      <div class="concert-info">
+        <h3>${concert.name}</h3>
+        <p><strong>Location:</strong> ${concert.location}</p>
+        <p><strong>Date:</strong> ${concert.date}</p>
+        <button class="btn-secondary delete-btn" data-index="${index}">Delete</button>
+      </div>
+    `;
     list.appendChild(card);
-  };
+  });
 
-  // Botones delete
+  // Eventos delete (siempre después de crear las tarjetas)
   document.querySelectorAll(".delete-btn").forEach(btn => {
     btn.onclick = function () {
-      concerts.splice(this.dataset.index, 1);
+      const i = parseInt(this.dataset.index);
+      concerts.splice(i, 1);
       localStorage.setItem("concerts", JSON.stringify(concerts));
       loadConcerts();
     };
   });
+}
 
-
-// CUANDO LA PÁGINA CARGUE
+/* TODO AL CARGAR LA PÁGINA */
 document.addEventListener("DOMContentLoaded", () => {
-  loadConcerts();   // ← cargar al inicio
 
-  // Añadir nuevo concierto
-  document.getElementById("concert-form").onsubmit = function (e) {
+ // Cargar conciertos al inicio
+  loadConcerts();
+
+  // Formulario añadir concierto
+  document.getElementById("concert-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const name = document.getElementById("concert-name").value.trim();
@@ -82,99 +84,48 @@ document.addEventListener("DOMContentLoaded", () => {
     concerts.push({ name, location, date, image });
     localStorage.setItem("concerts", JSON.stringify(concerts));
     this.reset();
-    loadConcerts();   // ← ESTO ES LO QUE HACE QUE SE VEA
-  };
-});
+    loadConcerts(); // ← Aquí se ve el cambio visual
+  });
 
-  // Attach delete events
-  document.querySelectorAll(".delete-btn").forEach(btn => {
-    btn.addEventListener("click", function () {
-      const index = parseInt(this.dataset.index);
-      concerts.splice(index, 1);
-      localStorage.setItem("concerts", JSON.stringify(concerts));
-      loadConcerts();
+  // Menú móvil
+  const menuBtn = document.getElementById("menu-btn");
+  const navMenu = document.getElementById("nav-menu");
+  if (menuBtn && navMenu) {
+    menuBtn.addEventListener("click", () => {
+      navMenu.style.display = navMenu.style.display === "block" ? "" : "block";
     });
-  });
+  }
 
+  document.querySelectorAll(".band-card").forEach(card => new BandCard(card));
+  const modal = document.getElementById("band-modal");
+  const modalClose = document.getElementById("modal-close");
+  if (modalClose) modalClose.addEventListener("click", () => modal.setAttribute("aria-hidden", "true"));
+  if (modal) {
+    modal.addEventListener("click", e => {
+      if (e.target === modal) modal.setAttribute("aria-hidden", "true");
+    });
+  }
 
-/* Main DOM ready */
-window.addEventListener('DOMContentLoaded', () => {
-  const menuBtn = document.getElementById('menu-btn');
-  const navMenu = document.getElementById('nav-menu');
-  const bandCards = document.querySelectorAll('.band-card');
-  const modal = document.getElementById('band-modal');
-  const modalClose = document.getElementById('modal-close');
-
-  /* Mobile menu toggle */
-  menuBtn.addEventListener('click', () => {
-    navMenu.style.display = navMenu.style.display === 'block' ? '' : 'block';
-  });
-
-  /* Initialize band cards */
-  bandCards.forEach(card => new BandCard(card));
-
-  /* Modal close */
-  modalClose.addEventListener('click', () => {
-    modal.setAttribute('aria-hidden', 'true');
-  });
-
-  modal.addEventListener('click', e => {
-    if (e.target === modal) {
-      modal.setAttribute('aria-hidden', 'true');
-    }
-  });
-
-  /* ================================
-     CRUD: Add new concert
-     ================================ */
-  document.getElementById("concert-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const name = document.getElementById("concert-name").value.trim();
-    const location = document.getElementById("concert-location").value.trim();
-    const date = document.getElementById("concert-date").value;
-    const image = document.getElementById("concert-image").value.trim();
-
-    // Basic validation
-    if (!name || !location || !date || !image) {
-      alert("Please fill in all fields!");
-      return;
-    }
-
-    // Add to array
-    concerts.push({ name, location, date, image });
-
-    // Save to localStorage
-    localStorage.setItem("concerts", JSON.stringify(concerts));
-
-    // Reset form and update list
-    this.reset();
-    loadConcerts();
-  });
-
-  /* Load concerts on page start */
-  loadConcerts();
-
-  /* Contact form (simulated send) */
-  const contactForm = document.getElementById('contact-form');
+  
+  const contactForm = document.getElementById("contact-form");
   if (contactForm) {
-    contactForm.addEventListener('submit', e => {
+    contactForm.addEventListener("submit", e => {
       e.preventDefault();
-      alert("Message sent successfully! (simulated)");
+      alert("Mensaje enviado (simulado)");
       contactForm.reset();
     });
   }
 
-  /* Background music player */
+  
   const playButton = document.getElementById("playMusic");
   if (playButton) {
     playButton.addEventListener("click", () => {
       document.getElementById("player").innerHTML = `
         <iframe width="0" height="0" 
           src="https://www.youtube.com/embed/FDNiE5CKuSw?autoplay=1&loop=1&playlist=FDNiE5CKuSw" 
-          frameborder="0" allow="autoplay"></iframe>
+          allow="autoplay" frameborder="0"></iframe>
       `;
       playButton.style.display = "none";
     });
   }
-})
+}); 
