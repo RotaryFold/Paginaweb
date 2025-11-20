@@ -27,29 +27,64 @@ class BandCard {
   }
 }
 
-/* Global array for concerts */
+/* ===== CRUD CONCIERTOS - VERSIÓN QUE FUNCIONA SÍ O SÍ ===== */
 let concerts = [];
 
-/* Load concerts from localStorage and display them */
 function loadConcerts() {
-  const concertList = document.getElementById("concert-list");
-  concertList.innerHTML = "";
+  const list = document.getElementById("concert-list");
+  list.innerHTML = "";                                     // limpiar
 
-  // Load from localStorage
   concerts = JSON.parse(localStorage.getItem("concerts")) || [];
 
-  concerts.for;Each((concert, index) that;{
+  concerts.forEach((concert, index) => {
     const card = document.createElement("div");
     card.className = "concert-card";
     card.innerHTML = `
-      <img src="${concert.image}" alt="${concert.name} concert">
-      <h3>${concert.name}</h3>
-      <p><strong>Location:</strong> ${concert.location}</p>
-      <p><strong>Date:</strong> ${concert.date}</p>
-      <button class="btn-secondary delete-btn" data-index="${index}">Delete</button>
+      <img src="${concert.image}" alt="${concert.name}" onerror="this.src='https://via.placeholder.com/300x200/000/fff?text=No+Image'">
+      <div class="concert-info">
+        <h3>${concert.name}</h3>
+        <p><strong>Location:</strong> ${concert.location}</p>
+        <p><strong>Date:</strong> ${concert.date}</p>
+        <button class="btn-secondary delete-btn" data-index="${index}">Delete</button>
+      </div>
     `;
-    concertList.appendChild(card);
+    list.appendChild(card);
   });
+
+  // Botones delete
+  document.querySelectorAll(".delete-btn").forEach(btn => {
+    btn.onclick = function () {
+      concerts.splice(this.dataset.index, 1);
+      localStorage.setItem("concerts", JSON.stringify(concerts));
+      loadConcerts();
+    };
+  });
+}
+
+// CUANDO LA PÁGINA CARGUE
+document.addEventListener("DOMContentLoaded", () => {
+  loadConcerts();   // ← cargar al inicio
+
+  // Añadir nuevo concierto
+  document.getElementById("concert-form").onsubmit = function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("concert-name").value.trim();
+    const location = document.getElementById("concert-location").value.trim();
+    const date = document.getElementById("concert-date").value;
+    const image = document.getElementById("concert-image").value.trim();
+
+    if (!name || !location || !date || !image) {
+      alert("¡Rellena todos los campos!");
+      return;
+    }
+
+    concerts.push({ name, location, date, image });
+    localStorage.setItem("concerts", JSON.stringify(concerts));
+    this.reset();
+    loadConcerts();   // ← ESTO ES LO QUE HACE QUE SE VEA
+  };
+});
 
   // Attach delete events
   document.querySelectorAll(".delete-btn").forEach(btn => {
@@ -60,7 +95,7 @@ function loadConcerts() {
       loadConcerts();
     });
   });
-}
+
 
 /* Main DOM ready */
 window.addEventListener('DOMContentLoaded', () => {
@@ -142,4 +177,4 @@ window.addEventListener('DOMContentLoaded', () => {
       playButton.style.display = "none";
     });
   }
-});
+})
