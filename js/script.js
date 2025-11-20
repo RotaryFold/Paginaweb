@@ -36,20 +36,20 @@ function loadConcerts() {
 
   concerts = JSON.parse(localStorage.getItem("concerts")) || [];
 
-  concerts.forEach((concert, index) => {
-    const card = document.createElement("div");
-    card.className = "concert-card";
-    card.innerHTML = `
-      <img src="${concert.image}" alt="${concert.name}" onerror="this.src='https://via.placeholder.com/300x200/000/fff?text=No+Image'">
-      <div class="concert-info">
-        <h3>${concert.name}</h3>
-        <p><strong>Location:</strong> ${concert.location}</p>
-        <p><strong>Date:</strong> ${concert.date}</p>
-        <button class="btn-secondary delete-btn" data-index="${index}">Delete</button>
-      </div>
-    `;
+concerts.forEach((concert, index) => {
+  const card = document.createElement("div");
+  card.className = "concert-card";
+  card.innerHTML = `
+    <img src="${concert.image}" alt="${concert.name} concert" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+    <h3>${concert.name}</h3>
+    <p><strong>Location:</strong> ${concert.location}</p>
+    <p><strong>Date:</strong> ${concert.date}</p>
+    <button class="btn-secondary delete-btn" data-index="${index}">Delete</button>
+  `;
+  concertList.appendChild(card);
+});
     list.appendChild(card);
-  });
+  };
 
   // Botones delete
   document.querySelectorAll(".delete-btn").forEach(btn => {
@@ -59,7 +59,7 @@ function loadConcerts() {
       loadConcerts();
     };
   });
-}
+
 
 // CUANDO LA PÁGINA CARGUE
 document.addEventListener("DOMContentLoaded", () => {
