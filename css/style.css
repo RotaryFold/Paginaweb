@@ -509,5 +509,42 @@ body {
     text-align: center;
     padding-top: 50px;
 }
+.concert-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
 
+.concert-card {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  display: flex;
+  gap: 12px;
+}
+
+.concert-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.concert-card h3 {
+  color: var(--accent);
+  margin: 0 0 8px 0;
+}
+
+.concert-card p {
+  margin: 4px 0;
+  color: var(--text-color);
+}
+
+@media (max-width: 599px) {
+  .concert-list {
+    grid-template-columns: 1fr;
+  }
+}
 }

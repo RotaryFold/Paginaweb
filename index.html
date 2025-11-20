@@ -5,30 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Metal Legends</title>
   
-<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet"
-<link rel="stylesheet" href=" Абhttps://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
-</head>
-  
+  <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
- 
-<div class="normal-section">
-    <p></p>
-</div>
-  
-
-<script>
-  document.getElementById("playMusic").addEventListener("click", () => {
-    document.getElementById("player").innerHTML = `
-      <iframe width="0" height="0" 
-        src="https://www.youtube.com/watch?v=FDNiE5CKuSw" 
-        frameborder="0" allow="autoplay"></iframe>`;
-  });
-</script>
-
-
 
   <!-- header -->
   <header id="main-header" class="main-header">
@@ -42,6 +24,7 @@
           <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="#bands" class="nav-link">Bands</a></li>
           <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="#concerts" class="nav-link">Concerts</a></li>
           <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
@@ -51,26 +34,12 @@
       </button>
     </div>
   </header>
-   </div>
 
   <div class="parallax-container">
     <div class="content">
-        <h1></h1>
+      <h1></h1>
     </div>
-</div>
-
-  <!--music-->
-  <button id="playmusic">🎵 Reproducir música</button>
-<div id="player"></div>
-
-<script>
-  document.getElementById("playMusic").addEventListener("click", () => {
-    document.getElementById("player").innerHTML = `
-      <iframe width="0" height="0" 
-        src="https://www.youtube.com/watch?v=FDNiE5CKuSw" 
-        frameborder="0" allow="autoplay"></iframe>`;
-  });
-</script>
+  </div>
 
   <!-- hero / home -->
   <main id="home" class="hero-section">
@@ -88,36 +57,36 @@
       <div class="bands-grid">
         
         <article class="band-card" data-band="metallica">
-          <img class="band-image" src="https://s3.abcstatics.com/abc/www/multimedia/cultura/2023/04/13/Metallica-R-ReoHPlfXn08hieR7JXNNOLK-1200x840@abc.jpeg" alt="band photo">
+          <img class="band-image" src="https://s3.abcstatics.com/abc/www/multimedia/cultura/2023/04/13/Metallica-R-ReoHPlfXn08hieR7JXNNOLK-1200x840@abc.jpeg" alt="Metallica">
           <div class="band-info">
-            <h3 class="band-title">Metallica </h3>
+            <h3 class="band-title">Metallica</h3>
             <p class="band-meta">Thrash metal · 1981</p>
             <button class="band-more-btn">More</button>
           </div>
         </article>
 
         <article class="band-card" data-band="iron-maiden">
-          <img class="band-image" src="https://www.madnesslive.es/img/cms/posters/ironmaiden_2023_web.jpg" alt="band photo">
+          <img class="band-image" src="https://www.madnesslive.es/img/cms/posters/ironmaiden_2023_web.jpg" alt="Iron Maiden">
           <div class="band-info">
-            <h3 class="band-title">Iron Maiden </h3>
+            <h3 class="band-title">Iron Maiden</h3>
             <p class="band-meta">Heavy metal · 1975</p>
             <button class="band-more-btn">More</button>
           </div>
         </article>
 
         <article class="band-card" data-band="slayer">
-          <img class="band-image" src="https://www.metal-archives.com/images/7/2/72_logo.png?1348" alt="band photo">
+          <img class="band-image" src="https://www.metal-archives.com/images/7/2/72_logo.png?1348" alt="Slayer">
           <div class="band-info">
-            <h3 class="band-title">Slayer </h3>
+            <h3 class="band-title">Slayer</h3>
             <p class="band-meta">Thrash metal · 1981</p>
             <button class="band-more-btn">More</button>
           </div>
         </article>
 
         <article class="band-card" data-band="judas-priest">
-          <img class="band-image" src="https://i.pinimg.com/736x/59/4c/24/594c2484cc427644bce08fa8cb2d2e8d.jpg" alt="band photo">
+          <img class="band-image" src="https://i.pinimg.com/736x/59/4c/24/594c2484cc427644bce08fa8cb2d2e8d.jpg" alt="Judas Priest">
           <div class="band-info">
-            <h3 class="band-title">Judas Priest </h3>
+            <h3 class="band-title">Judas Priest</h3>
             <p class="band-meta">Heavy metal · 1969</p>
             <button class="band-more-btn">More</button>
           </div>
@@ -131,7 +100,6 @@
     <div class="container">
       <h2 class="section-title">Gallery</h2>
       <div class="gallery-grid">
-        
         <img class="gallery-item" src="https://meyersound.es/es/wp-content/uploads/2023/06/metallica-2.jpeg" alt="concert 1">
         <img class="gallery-item" src="https://meyersound.es/es/wp-content/uploads/2023/06/metallica-1.jpeg" alt="concert 2">
         <img class="gallery-item" src="https://cdn.media.amplience.net/i/metallica/2024-07jul12_social" alt="concert 3">
@@ -145,34 +113,33 @@
       </div>
     </div>
   </section>
+
   <!-- concerts CRUD -->
-<section id="concerts" class="concerts-section">
-  <div class="container">
-    <h2 class="section-title">Concerts</h2>
+  <section id="concerts" class="concerts-section">
+    <div class="container">
+      <h2 class="section-title">Concerts</h2>
 
-    <!-- Create concert form -->
-    <form id="concert-form" class="concert-form" novalidate>
-  <label class="form-label" for="concert-name">Concert Name</label>
-  <input type="text" id="concert-name" class="form-input" required>
+      <form id="concert-form" class="concert-form" novalidate>
+        <label class="form-label" for="concert-name">Concert Name</label>
+        <input type="text" id="concert-name" class="form-input" required>
 
-  <label class="form-label" for="concert-location">Location</label>
-  <input type="text" id="concert-location" class="form-input" required>
+        <label class="form-label" for="concert-location">Location</label>
+        <input type="text" id="concert-location" class="form-input" required>
 
-  <label class="form-label" for="concert-date">Date</label>
-  <input type="date" id="concert-date" class="form-input" required>
+        <label class="form-label" for="concert-date">Date</label>
+        <input type="date" id="concert-date" class="form-input" required>
 
-  <label class="form-label" for="concert-image">Image URL</label>
-  <input type="url" id="concert-image" class="form-input" required>
+        <label class="form-label" for="concert-image">Image URL</label>
+        <input type="url" id="concert-image" class="form-input" required>
 
-  <button class="btn-secondary" type="submit">Add Concert</button>
-</form>
+        <button class="btn-secondary" type="submit">Add Concert</button>
+      </form>
 
-    <!-- Read: concerts list -->
-    <div id="concert-list" class="concert-list">
-      <!-- JS will load concerts here -->
+      <div id="concert-list" class="concert-list">
+        <!-- Los conciertos aparecerán aquí -->
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- contact -->
   <section id="contact" class="contact-section">
@@ -180,18 +147,22 @@
       <h2 class="section-title">Contact</h2>
       <form id="contact-form" class="contact-form" novalidate>
         <label for="name" class="form-label">Name</label>
-        <input id="name" class="form-input" type="text" name="name" required>
+        <input id="name" class="form-input" type="text" required>
 
         <label for="email" class="form-label">Email</label>
-        <input id="email" class="form-input" type="email" name="email" required>
+        <input id="email" class="form-input" type="email" required>
 
         <label for="message" class="form-label">Message</label>
-        <textarea id="message" class="form-textarea" name="message" rows="4" required></textarea>
+        <textarea id="message" class="form-textarea" rows="4" required></textarea>
 
         <button class="btn-secondary" type="submit">Send</button>
       </form>
     </div>
   </section>
+
+  <!-- Reproductor de música (oculto) -->
+  <button id="playMusic">Reproducir música</button>
+  <div id="player"></div>
 
   <!-- footer -->
   <footer id="main-footer" class="main-footer">
@@ -207,13 +178,18 @@
     </div>
   </footer>
 
-  <!-- modal for band details -->
-  <div><div id="band-modal" class="band-modal" aria-hidden="true"></id></div>
+  <!-- Modal de bandas -->
+  <div id="band-modal" class="band-modal" aria-hidden="true">
     <div class="band-modal-content">
-      <button id="modal-close" class="modal-close" aria-label="close modal"><i class="fa-solid fa-xmark"></i></button>
+      <button id="modal-close" class="modal-close" aria-label="close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
       <h3 id="modal-title" class="modal-title"></h3>
       <p id="modal-text" class="modal-text"></p>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <!-- SCRIPT AL FINAL (¡SIEMPRE!) -->
+  <script src="js/script.js"></script>
 </body>
 </html>
