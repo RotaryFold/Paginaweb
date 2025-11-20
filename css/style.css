@@ -1,5 +1,35 @@
 /* Base / variables */
 :root {
+    h1, h2, h3, h4, h5, h6,
+.brand-title,
+.hero-title,
+.hero-subtitle,
+.section-title,
+.band-title,
+.modal-title,
+.concert-card h3 {
+    font-family: 'Metal Mania', cursive !important;
+    color: #b71c1c !important;
+    text-shadow: 0 0 15px #b71c1c, 0 0 30px #b71c1c !important;
+    letter-spacing: 1.5px !important;
+    font-weight: normal !important;
+}
+
+/* Ajustes extra para que quede perfecto */
+.hero-title {
+    font-size: 4.5rem !important;
+    line-height: 1;
+}
+
+.section-title {
+    font-size: 2.8rem !important;
+    margin-bottom: 2rem;
+}
+
+.brand-title {
+    font-size: 2rem !important;
+}
+    
     --bg-color: #0b0b0b;
     --card-bg: #111111;
     --text-color: #e6e6e6;
@@ -412,4 +442,72 @@ body {
     .nav-menu {
         display: flex;
     }
+    /* Concerts CRUD section */
+.concert-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    background: var(--card-bg);
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.concert-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.concert-card {
+    background: var(--card-bg);
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.concert-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+@media (max-width: 599px) {
+    .concert-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1023px) and (min-width: 600px) {
+    .concert-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.parallax-container {
+    background-image: url('https://pbs.twimg.com/media/Ex4AimeXAAEiZoA.jpg');
+    min-height: 600px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+    text-align: center;
+}
+
+.normal-section {
+    height: 5px;
+    background-color: black;
+    text-align: center;
+    padding-top: 50px;
+}
+
 }
