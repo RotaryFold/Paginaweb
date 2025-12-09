@@ -33,5 +33,5 @@ If you want to use my product as an example or just a base, feel free. If you wa
 ## Acknowledgments
 
   - W3School for providing free info.
-  - Chatgpt for helping me fix my code.
-  - My friend Ari providing advice + emotional support.
+  - Chatgpt  for helping me fix my code.
+  - My friend Ari who supported me and actually helped me doing all the coding.
